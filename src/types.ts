@@ -249,6 +249,35 @@ export interface WebSocketCloseEvent {
  * };
  * ```
  */
+export type RequestEventType =
+  | "request_start"
+  | "request_sent"
+  | "response_headers"
+  | "body_progress"
+  | "body_complete"
+  | "done"
+  | "error";
+
+export interface RequestEvent {
+  type: RequestEventType;
+  timestamp: number;
+  status?: number;
+  url?: string;
+  contentLength?: number | null;
+  downloadedBytes?: number;
+  message?: string;
+}
+
+export interface RequestDiagnostics {
+  totalDurationMs?: number;
+  headersDurationMs?: number;
+  status?: number;
+  localAddr?: string;
+  remoteAddr?: string;
+  tlsPeerCertificatePresent?: boolean;
+  tlsPeerCertificateChainLength?: number;
+}
+
 export interface RequestInit {
   /**
    * A string to set request's method.
@@ -371,6 +400,17 @@ export interface RequestInit {
    * @default true
    */
   compress?: boolean;
+
+  /**
+   * Optional callback for structured request lifecycle events emitted by the
+   * native bridge.
+   */
+  onRequestEvent?: (event: RequestEvent) => void;
+
+  /**
+   * Capture a final diagnostics payload where supported by the native layer.
+   */
+  captureDiagnostics?: boolean;
 }
 
 /**
@@ -425,6 +465,11 @@ export interface CreateSessionOptions {
    * @default false
    */
   insecure?: boolean;
+
+  /**
+   * Enable extra connection/TLS diagnostics for requests made through this session.
+   */
+  captureDiagnostics?: boolean;
 }
 
 /**
@@ -480,6 +525,11 @@ export interface CreateTransportOptions {
    * Read timeout (ms).
    */
   readTimeout?: number;
+
+  /**
+   * Enable extra connection/TLS diagnostics for requests made through this transport.
+   */
+  captureDiagnostics?: boolean;
 }
 
 /**
@@ -621,6 +671,17 @@ export interface RequestOptions {
    * @default false
    */
   insecure?: boolean;
+
+  /**
+   * Optional callback for structured request lifecycle events emitted by the
+   * native bridge.
+   */
+  onRequestEvent?: (event: RequestEvent) => void;
+
+  /**
+   * Capture a final diagnostics payload where supported by the native layer.
+   */
+  captureDiagnostics?: boolean;
 }
 
 /**
@@ -669,6 +730,11 @@ export interface NativeResponse {
    * If no redirects occurred, this will match the original request URL.
    */
   url: string;
+
+  /**
+   * Optional diagnostics payload collected by the native layer.
+   */
+  diagnostics?: RequestDiagnostics | null;
 }
 
 /**
