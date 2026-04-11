@@ -1,5 +1,5 @@
 {
-  "name": "wreq-js",
+  "name": "@thinkscape/wreq-js",
   "version": "2.2.2",
   "description": "Node.js/TypeScript HTTP client with browser TLS fingerprint impersonation (JA3/JA4). Bypass Cloudflare and anti-bot detection. Rust-powered, fetch()-compatible.",
   "type": "module",
@@ -66,19 +66,19 @@
     "wreq",
     "browser"
   ],
-  "author": "Oleksandr Herasymov <herasymov7@icloud.com>",
+  "author": "Thinkscape",
   "contributors": [
     "will-work-for-meal"
   ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sqdshguy/wreq-js.git"
+    "url": "git+https://github.com/Thinkscape/wreq-js.git"
   },
   "bugs": {
-    "url": "https://github.com/sqdshguy/wreq-js/issues"
+    "url": "https://github.com/Thinkscape/wreq-js/issues"
   },
-  "homepage": "https://wreq.sqdsh.win",
+  "homepage": "https://github.com/Thinkscape/wreq-js#readme",
   "devDependencies": {
     "@biomejs/biome": "^2.4.10",
     "@napi-rs/cli": "^3.6.0",
@@ -118,5 +118,8 @@
       "x86_64-unknown-linux-musl",
       "x86_64-pc-windows-msvc"
     ]
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

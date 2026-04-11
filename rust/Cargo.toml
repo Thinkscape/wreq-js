@@ -3,7 +3,7 @@ name = "wreq-js"
 version = "2.2.2"
 edition = "2024"
 license = "MIT"
-authors = ["Oleksandr Herasymov", "will-work-for-meal"]
+authors = ["Thinkscape"]
 
 [lib]
 crate-type = ["cdylib"]

@@ -1,10 +1,9 @@
-# wreq-js
+# @thinkscape/wreq-js
 
-[![npm](https://img.shields.io/npm/v/wreq-js.svg)](https://www.npmjs.com/package/wreq-js)
-[![CI](https://github.com/sqdshguy/wreq-js/actions/workflows/test.yml/badge.svg)](https://github.com/sqdshguy/wreq-js/actions/workflows/test.yml)
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/sqdshguy/wreq-js)
+[![npm](https://img.shields.io/npm/v/%40thinkscape%2Fwreq-js.svg)](https://www.npmjs.com/package/@thinkscape/wreq-js)
+[![CI](https://github.com/Thinkscape/wreq-js/actions/workflows/test.yml/badge.svg)](https://github.com/Thinkscape/wreq-js/actions/workflows/test.yml)
 
-`wreq-js` is a Node.js and TypeScript HTTP client that helps you bypass TLS fingerprinting checks used by services like Cloudflare and DataDome, powered by native Rust bindings from [wreq](https://github.com/0x676e67/wreq).
+`@thinkscape/wreq-js` is Thinkscape's maintained fork of `wreq-js`: a Node.js and TypeScript HTTP client that helps you bypass TLS fingerprinting checks used by services like Cloudflare and DataDome, powered by native Rust bindings from [wreq](https://github.com/0x676e67/wreq).
 
 If your requests work in a browser but get blocked from Node.js because your network fingerprint looks wrong, this is for you.
 You keep a fetch style API and get browser profile level network behavior without running a full browser.
@@ -30,13 +29,9 @@ Common search terms: cloudflare bypass, datadome bypass, tls fingerprinting, ja3
 
 ## Documentation
 
-All guides, concepts, and API reference live at:
+Documentation for this fork currently lives in the repository README and source tree while Thinkscape-specific docs are being stood up.
 
-- https://wreq.sqdsh.win
-
-(If you're looking for examples, sessions/cookies, proxy usage, streaming, WebSockets, or the full API surface - it's all there.)
-
-Quick links:
+Upstream reference docs for the current API surface remain useful background material:
 1. Quickstart: https://wreq.sqdsh.win/quickstart
 2. API overview: https://wreq.sqdsh.win/api-reference/overview
 3. Sessions: https://wreq.sqdsh.win/concepts/sessions
@@ -46,11 +41,11 @@ Quick links:
 ## Installation
 
 ```bash
-npm install wreq-js
+npm install @thinkscape/wreq-js
 # or
-yarn add wreq-js
-pnpm add wreq-js
-bun add wreq-js
+yarn add @thinkscape/wreq-js
+pnpm add @thinkscape/wreq-js
+bun add @thinkscape/wreq-js
 ```
 
 Current configured native target matrix in `package.json` includes:
@@ -63,7 +58,7 @@ If a matching prebuilt artifact is unavailable for your environment, installatio
 ## Quick start
 
 ```ts
-import { fetch } from 'wreq-js';
+import { fetch } from '@thinkscape/wreq-js';
 
 const res = await fetch('https://example.com/api', {
   browser: 'chrome_142',
@@ -82,7 +77,7 @@ For **most real-world workloads**, start with a session and reuse it across requ
 This keeps one cookie and request context for multi step flows.
 
 ```ts
-import { createSession } from 'wreq-js';
+import { createSession } from '@thinkscape/wreq-js';
 
 const session = await createSession({ browser: 'chrome_142', os: 'windows' });
 
@@ -137,7 +132,7 @@ ws.onopen = () => {
 Use `session.websocket(...)` to reuse cookies and transport settings from session HTTP calls.
 
 ```ts
-import { createSession } from 'wreq-js';
+import { createSession } from '@thinkscape/wreq-js';
 
 const session = await createSession({ browser: 'chrome_142' });
 
