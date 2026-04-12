@@ -17,6 +17,15 @@ You keep a fetch style API and get browser profile level network behavior withou
 
 Common search terms: cloudflare bypass, datadome bypass, tls fingerprinting, ja3, ja4, browser impersonation, nodejs fetch, typescript http client.
 
+## Used by this monorepo
+
+In `agent-smart-fetch`, this fork powers the transport layer for:
+- browser-profiled single fetches
+- weighted request-phase progress events used by pi batch rendering
+- attachment and binary downloads that are streamed to temp files by the shared smart-fetch core
+
+The higher-level attachment/temp-file behavior lives in the smart-fetch packages in this monorepo, not in `@thinkscape/wreq-js` itself.
+
 ## Alternatives comparison
 
 | Library | Approach | API | Notes |
